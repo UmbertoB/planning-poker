@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  },
+  "scripts": {
+    "configure:all:prod": "lerna run configure:prod",
+    "start:dev": "lerna run start:dev",
+    "watch:shared": "lerna run build:watch --stream --scope @planning-poker/shared"
+  }
+}

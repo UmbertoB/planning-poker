@@ -1,0 +1,19 @@
+{
+  "name": "@planning-poker/shared",
+  "license": "UNLICENSED",
+  "version": "0.0.0",
+  "description": "Planning Poker Shared",
+  "author": "Umberto Barros <umbertobarrosf@gmail.com>",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "configure:prod": "npx tsc -b",
+    "start:dev": "npx tsc -w"
+  }
+}
