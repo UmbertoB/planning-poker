@@ -134,8 +134,8 @@
         "signature": "8f4d05967e2833b02f014b4a3ca135782bc1a695bfbbf8faed77e62a512ebd1b"
       },
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/events.ts": {
-        "version": "9f25370bf7c030c85016b4724890c99407bd120f62abfc8b7b45d02f92e344d6",
-        "signature": "98467b017707565da89e08c3dd6d1769fd726de26dde9c7d531e76d7f95a5a1e"
+        "version": "6373821c16f81fd9fafb82ef035cc2cd1d7ca78c2b7671c95222aade3c1c5158",
+        "signature": "f2cd3a3cb30c276cf6d5ec31f6a9832b63a27416e604ca08aca7bfa028d12c95"
       },
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/index.ts": {
         "version": "fdbb870deb829c2c7f6dbd355ca149f9295368411fba280b4f6232142e698041",
@@ -283,11 +283,8 @@
       "/usr/local/lib/node_modules/typescript/lib/lib.es2018.full.d.ts",
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/redux.ts",
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/room.ts",
-      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/payloads.ts",
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/poker.ts",
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/events.ts",
-      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/index.ts",
-      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/index.ts",
       "/home/umberto/node_modules/@types/color-name/index.d.ts",
       "/home/umberto/node_modules/@types/istanbul-lib-coverage/index.d.ts",
       "/home/umberto/node_modules/@types/istanbul-lib-report/index.d.ts",
@@ -296,7 +293,10 @@
       "/home/umberto/node_modules/@types/unist/index.d.ts",
       "/home/umberto/node_modules/@types/yargs-parser/index.d.ts",
       "/home/umberto/node_modules/@types/yargs/index.d.ts",
-      "/home/umberto/node_modules/@types/yoga-layout/index.d.ts"
+      "/home/umberto/node_modules/@types/yoga-layout/index.d.ts",
+      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/payloads.ts",
+      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/index.ts",
+      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/index.ts"
     ]
   },
   "version": "3.5.3"

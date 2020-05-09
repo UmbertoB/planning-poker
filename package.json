@@ -6,7 +6,7 @@
   },
   "scripts": {
     "configure:all:prod": "lerna run configure:prod",
-    "start:dev": "lerna run start:dev",
+    "start:dev": "lerna run start:dev --parallel --stream",
     "watch:shared": "lerna run build:watch --stream --scope @planning-poker/shared"
   }
 }
