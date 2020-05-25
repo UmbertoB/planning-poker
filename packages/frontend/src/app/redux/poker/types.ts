@@ -1,9 +1,15 @@
-import { PlayerCard } from '@planning-poker/shared';
+import { PokerSession } from '@planning-poker/shared';
 
 /**
  * Action types
  */
 export enum PokerActionTypes {
+    START_POKER_REQUEST = 'START_POKER_REQUEST',
+    START_POKER_SUCCESS = 'START_POKER_SUCCESS',
+    START_POKER_FAILURE = 'START_POKER_FAILURE',
+
+    STOP_POKER_NOT_ENOUGH_PLAYERS = 'STOP_POKER_NOT_ENOUGH_PLAYERS',
+
     SET_TASK_DESCRIPTION_REQUEST = 'SET_TASK_DESCRIPTION_REQUEST',
     SET_TASK_DESCRIPTION_SUCCESS = 'SET_TASK_DESCRIPTION_SUCCESS',
     SET_TASK_DESCRIPTION_FAILURE = 'SET_TASK_DESCRIPTION_FAILURE',
@@ -20,9 +26,4 @@ export enum PokerActionTypes {
 /**
  * Reducer state interface
  */
-export interface PokerReducerState {
-    currentTaskDescription: string
-    cardValueSelected: boolean
-    cardValuesSelected: PlayerCard[]
-    playerDeck: number[]
-}
+export type PokerReducerState = PokerSession;

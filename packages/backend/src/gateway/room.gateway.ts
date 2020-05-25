@@ -2,6 +2,7 @@ import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/web
 import { Logger } from '@nestjs/common';
 import { Socket, Server } from 'socket.io';
 import { RoomService } from 'src/service/room.service';
+import { PokerService } from 'src/service/poker.service';
 import {
   RoomEvents,
   PokerPlayer,
@@ -20,12 +21,12 @@ export class RoomGateway {
 
   private logger: Logger = new Logger('RoomGateway');
 
-  constructor(private rs: RoomService) { }
+  constructor(private rs: RoomService, private ps: PokerService) { }
 
   @SubscribeMessage(RoomEvents.JOIN_ROOM)
   joinRoom(client: Socket, payload: JoinRoomPayload) {
     const room = this.rs.getRoom(payload.room);
-    if (room && !room.pokerInProgress) {
+    if (room && !this.ps.isRoomPokerInProgress(room.id)) {
 
       const newPlayer: PokerPlayer = { id: client.id, name: payload.name, isAdmin: payload.isAdmin };
 
@@ -33,20 +34,28 @@ export class RoomGateway {
       this.rs.setRoomPlayer(newPlayer, payload.room);
 
       const currentRoomState = this.rs.getRoom(payload.room);
-      // refactor this
-      const PAYLOAD: NewPlayerPayload | JoinedRoomPayload = {
+      const currentPokerState = this.ps.getPokerSession(room.id);
+
+      // payloads
+      const joinedRoomPayload: JoinedRoomPayload = {
+        currentRoomState,
+        currentPokerState,
+        player: newPlayer,
+      }
+      const newPlayerPayload: NewPlayerPayload = {
         currentRoomState,
         newPlayer,
       }
+      // ------
 
-      client.emit(RoomEvents.JOINED_ROOM, PAYLOAD);
-      client.to(payload.room).emit(RoomEvents.NEW_PLAYER, PAYLOAD);
+      client.emit(RoomEvents.JOINED_ROOM, joinedRoomPayload);
+      client.to(payload.room).emit(RoomEvents.NEW_PLAYER, newPlayerPayload);
 
       this.logger.log(`${payload.name} joined Room ${payload.room}`);
 
     } else {
       const room = this.rs.getRoom(payload.room);
-      room && room.pokerInProgress
+      room && this.ps.isRoomPokerInProgress(room.id)
         ? client.emit(RoomEvents.CANT_JOIN_ALREADY_STARTED_POKER)
         : client.emit(RoomEvents.CANT_JOIN_INEXISTENT_ROOM)
     }
@@ -54,8 +63,6 @@ export class RoomGateway {
 
   @SubscribeMessage(RoomEvents.LEAVE_ROOM)
   leaveRoom(client: Socket, payload: LeaveRoomPayload) {
-    // if (this.rs.roomExists(payload.room)) @ERROR.1 {
-
     const currentRoomState = this.rs.getRoom(payload.room);
     const playerLeft = this.rs.removePlayerFromRoom(client.id, payload.room);
 
@@ -74,29 +81,12 @@ export class RoomGateway {
     }
     client.emit(RoomEvents.LEFT_ROOM);
 
-    this.logger.log(`${client.id} left Room ${payload.room}`)
-
-    // } else {
-    //   client.emit(RoomEvents.CANT_LEAVE_INEXISTENT_ROOM);
-    // }
-
-  }
-
-  @SubscribeMessage(RoomEvents.START_POKER)
-  startPokerRoom(client: Socket, payload: StartPokerPayload) {
-    if (this.rs.roomExists(payload.roomName)) {
-
-      const currentRoomState = this.rs.getRoom(payload.roomName);
-
-      currentRoomState.pokerInProgress = true;
-
-      this.wss.in(payload.roomName).emit(RoomEvents.POKER_STARTED);
-
-      this.logger.log(`${payload.roomName} poker has been started!`);
-
-    } else {
-      client.emit(RoomEvents.CANT_START_POKER_OF_INEXISTENT_ROOM);
+    if (currentRoomState && currentRoomState.players.length <= 1 && this.ps.isRoomPokerInProgress(currentRoomState.id)) {
+      this.ps.stopRoomPoker(currentRoomState.id);
+      client.to(payload.room).emit(RoomEvents.STOP_POKER_NOT_ENOUGH_PLAYERS);
     }
+
+    this.logger.log(`${client.id} left Room ${payload.room}`)
 
   }
 

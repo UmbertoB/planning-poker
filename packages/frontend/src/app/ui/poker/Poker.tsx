@@ -53,10 +53,10 @@ class Poker extends Component<PokerProps> {
 
     const POKER_STATUS = {
       waitingForMinimumPlayersNumber: room.players.length <= 1,
-      pokerInProgress: room.pokerInProgress,
-      waitingForTask: room.pokerInProgress && !poker.currentTaskDescription,
-      waitingForLoggedPlayerToSelectCard: room.pokerInProgress && poker.currentTaskDescription && !poker.cardValueSelected,
-      planningPokerFinished: room.pokerInProgress && poker.cardValuesSelected.length >= room.players.length,
+      pokerInProgress: poker.pokerInProgress,
+      waitingForTask: poker.pokerInProgress && !poker.currentTaskDescription,
+      waitingForLoggedPlayerToSelectCard: poker.pokerInProgress && poker.currentTaskDescription && !poker.cardValueSelected,
+      planningPokerFinished: poker.pokerInProgress && poker.cardValuesSelected.length >= room.players.length,
     };
 
     return (

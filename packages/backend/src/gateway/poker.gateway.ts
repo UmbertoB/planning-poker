@@ -3,8 +3,9 @@ import { Logger } from '@nestjs/common';
 import { Socket, Server } from 'socket.io';
 import { RoomService } from 'src/service/room.service';
 import { 
-  SetTaskDescriptionPayload, SelectCardValuePayload, CardValueSelectedPayload, RoomEvents
+  SetTaskDescriptionPayload, SelectCardValuePayload, CardValueSelectedPayload, RoomEvents, StartPokerPayload
 } from '@planning-poker/shared';
+import { PokerService } from 'src/service/poker.service';
 
 @WebSocketGateway()
 export class PokerGateway {
@@ -13,7 +14,7 @@ export class PokerGateway {
 
   private logger: Logger = new Logger('PokerGateway');
 
-  constructor(private rs: RoomService) { }
+  constructor(private rs: RoomService, private ps: PokerService) { }
 
   @SubscribeMessage(RoomEvents.SET_TASK_DESCRIPTION)
   setTaskDescription(client: Socket, payload: SetTaskDescriptionPayload) {
@@ -59,5 +60,22 @@ export class PokerGateway {
 
   }
 
+  @SubscribeMessage(RoomEvents.START_POKER)
+  startPokerRoom(client: Socket, payload: StartPokerPayload) {
+    if (this.rs.roomExists(payload.roomName)) {
+
+      const currentRoomState = this.rs.getRoom(payload.roomName);
+
+      this.ps.startRoomPoker(currentRoomState.id);
+
+      this.wss.in(payload.roomName).emit(RoomEvents.POKER_STARTED);
+
+      this.logger.log(`${payload.roomName} poker has been started!`);
+
+    } else {
+      client.emit(RoomEvents.CANT_START_POKER_OF_INEXISTENT_ROOM);
+    }
+
+  }
 
 }

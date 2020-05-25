@@ -14,7 +14,6 @@ const INITIAL_STATE: WebSocketReducerState = {
         id: '',
         name: '',
         players: [],
-        pokerInProgress: false,
     },
 };
 
@@ -48,30 +47,19 @@ const reducer: Reducer<WebSocketReducerState> = (state = INITIAL_STATE, { type, 
                 joiningRoom: true,
             };
 
+        case WebSocketActionTypes.JOIN_ROOM_FAILURE:
+            return {
+                ...state,
+                joiningRoom: false,
+            };
+
         case WebSocketActionTypes.JOIN_ROOM_SUCCESS:
             return {
                 ...state,
                 joiningRoom: false,
                 isConnectedToRoom: true,
-                loggedPlayer: payload.newPlayer,
+                loggedPlayer: payload.player,
                 room: payload.currentRoomState,
-            };
-
-        case WebSocketActionTypes.JOIN_ROOM_FAILURE:
-            return {
-                ...state,
-                joiningRoom: false,
-                loggedPlayer: {
-                    id: '',
-                    name: '',
-                    isAdmin: false,
-                },
-                room: {
-                    id: '',
-                    name: '',
-                    players: [],
-                    pokerInProgress: false,
-                },
             };
 
         case WebSocketActionTypes.NEW_PLAYER:
@@ -91,26 +79,6 @@ const reducer: Reducer<WebSocketReducerState> = (state = INITIAL_STATE, { type, 
                     players: payload.players,
                 },
             };
-
-        // START POKER
-        case WebSocketActionTypes.START_POKER_SUCCESS:
-            return {
-                ...state,
-                room: {
-                    ...state.room,
-                    pokerInProgress: true,
-                },
-            };
-
-        case WebSocketActionTypes.START_POKER_FAILURE:
-            return {
-                ...state,
-                room: {
-                    ...state.room,
-                    pokerInProgress: false,
-                },
-            };
-
 
         default:
             return state;

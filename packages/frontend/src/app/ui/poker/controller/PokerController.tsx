@@ -1,7 +1,6 @@
 import React, { FC, useState, ChangeEvent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 // redux
-import * as WebSocketActions from 'app/redux/webSocket/actions';
 import * as PokerActions from 'app/redux/poker/actions';
 import { ApplicationState } from 'app/redux/rootReducer';
 // ui
@@ -22,7 +21,7 @@ const mapState = (state: ApplicationState) => ({
     isPlayerAdmin: state.webSocket.loggedPlayer.isAdmin,
 });
 const mapDispatch = {
-    startPokerRequest: WebSocketActions.startPokerRequest,
+    startPokerRequest: PokerActions.startPokerRequest,
     setTaskDescriptionRequest: PokerActions.setTaskDescriptionRequest,
     restartPokerRequest: PokerActions.restartPokerRequest,
     selectCardValueRequest: PokerActions.selectCardValueRequest,

@@ -5,7 +5,14 @@ import {
     TaskDescriptionUpdatedPayload,
     SelectCardValuePayload,
     CardValueSelectedPayload,
+    StartPokerPayload,
 } from '@planning-poker/shared';
+
+export const startPokerRequest = (payload: StartPokerPayload) => action(PokerActionTypes.START_POKER_REQUEST, payload);
+export const startPokerSuccess = () => action(PokerActionTypes.START_POKER_SUCCESS);
+export const startPokerFailure = () => action(PokerActionTypes.START_POKER_FAILURE);
+
+export const stopPokerNotEnoughPlayers = () => action(PokerActionTypes.STOP_POKER_NOT_ENOUGH_PLAYERS);
 
 export const setTaskDescriptionRequest = (payload: SetTaskDescriptionPayload) => action(PokerActionTypes.SET_TASK_DESCRIPTION_REQUEST, payload);
 export const setTaskDescriptionSuccess = (payload: TaskDescriptionUpdatedPayload) => action(PokerActionTypes.SET_TASK_DESCRIPTION_SUCCESS, payload);

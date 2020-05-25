@@ -3,6 +3,7 @@ import { AppGateway } from 'src/gateway/app.gateway';
 import { RoomController } from 'src/controller/room.controller';
 import { PingController } from 'src/controller/ping.controller';
 import { RoomService } from 'src/service/room.service';
+import { PokerService } from 'src/service/poker.service';
 import { PokerGateway } from 'src/gateway/poker.gateway';
 import { RoomGateway } from 'src/gateway/room.gateway';
 
@@ -13,7 +14,8 @@ import { RoomGateway } from 'src/gateway/room.gateway';
     AppGateway,
     PokerGateway,
     RoomGateway, 
-    RoomService
+    RoomService,
+    PokerService
   ],
 })
 export class AppModule {}

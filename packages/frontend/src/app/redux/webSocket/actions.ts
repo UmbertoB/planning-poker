@@ -6,7 +6,6 @@ import {
     LeaveRoomPayload,
     JoinedRoomPayload,
     CreateRoomPayload,
-    StartPokerPayload,
 } from '@planning-poker/shared';
 
 export const joinRoomRequest = (joinRoomPayload: JoinRoomPayload) => action(WebSocketActionTypes.JOIN_ROOM_REQUEST, joinRoomPayload);
@@ -22,7 +21,3 @@ export const playerLeft = (currentRoomState: Room) => action(WebSocketActionType
 export const createRoomRequest = (data: CreateRoomPayload) => action(WebSocketActionTypes.CREATE_ROOM_REQUEST, data);
 export const createRoomSuccess = (data: Room) => action(WebSocketActionTypes.CREATE_ROOM_SUCCESS, { data });
 export const createRoomFailure = () => action(WebSocketActionTypes.CREATE_ROOM_FAILURE);
-
-export const startPokerRequest = (payload: StartPokerPayload) => action(WebSocketActionTypes.START_POKER_REQUEST, payload);
-export const startPokerSuccess = () => action(WebSocketActionTypes.START_POKER_SUCCESS);
-export const startPokerFailure = () => action(WebSocketActionTypes.START_POKER_FAILURE);

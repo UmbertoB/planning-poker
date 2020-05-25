@@ -2,9 +2,9 @@ import {
     joinRoomSaga,
     leaveRoomSaga,
     createRoomSaga,
-    startPoker,
 } from 'app/redux/webSocket/sagas';
 import {
+    startPoker,
     setTaskDescription,
     cardValuesSelected,
     restartPoker,

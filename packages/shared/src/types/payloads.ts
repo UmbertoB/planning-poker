@@ -1,4 +1,5 @@
 import { Room, PokerPlayer } from './room';
+import { PokerSession } from './poker';
 
 // create room
 export interface CreateRoomPayload {
@@ -16,6 +17,7 @@ export interface JoinRoomPayload {
 export interface JoinedRoomPayload {
     player: PokerPlayer
     currentRoomState: Room
+    currentPokerState: PokerSession;
 }
 
 export interface LeaveRoomPayload {

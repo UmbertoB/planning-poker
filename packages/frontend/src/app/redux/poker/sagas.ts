@@ -14,6 +14,9 @@ import {
     selectCardValueFailure,
     otherPlayerCardValue,
     restartPokerSuccess,
+    startPokerSuccess,
+    startPokerFailure,
+    stopPokerNotEnoughPlayers,
 } from 'app/redux/poker/actions';
 import {
     Action,
@@ -22,7 +25,32 @@ import {
     TaskDescriptionUpdatedPayload,
     SelectCardValuePayload,
     CardValueSelectedPayload,
+    StartPokerPayload,
 } from '@planning-poker/shared';
+import { toast } from 'react-toastify';
+
+
+export function* startPoker({ client }: { client: SocketIOClient.Socket }) {
+
+    yield takeEvery(PokerActionTypes.START_POKER_REQUEST, function* (action: Action<string, StartPokerPayload>) {
+        yield fork(eventEmitter, client, RoomEvents.START_POKER, action.payload);
+    });
+
+    yield fork(eventListener, client, RoomEvents.POKER_STARTED, function* () {
+        yield put(startPokerSuccess());
+    });
+
+    yield fork(eventListener, client, RoomEvents.CANT_START_POKER_OF_INEXISTENT_ROOM, function* () {
+        yield put(startPokerFailure());
+        toast('Can`t start poker of inexistent room');
+    });
+
+    yield fork(eventListener, client, RoomEvents.STOP_POKER_NOT_ENOUGH_PLAYERS, function* () {
+        yield put(stopPokerNotEnoughPlayers());
+        toast('Can`t start poker of inexistent room');
+    });
+
+}
 
 export function* setTaskDescription({ client }: { client: SocketIOClient.Socket }) {
 

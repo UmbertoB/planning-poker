@@ -122,20 +122,20 @@
         "signature": "3524e183e0ce5b0f8b284f7b4831029ba4f9f985314efae9e6a21ab8e53b83dd"
       },
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/room.ts": {
-        "version": "004355febd413bea7ec34cbba8675a80cd29726023b448d808ddbfb397acf8dc",
-        "signature": "067af570f34f9a43175c929b2b8d96ad73bcc1521327d91c9a748933aba1bd40"
-      },
-      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/payloads.ts": {
-        "version": "99fda743e5aa4668124b4b030c5e9ae39948f1c085238d56902def753476f533",
-        "signature": "cdf53dd37fa516f52cca1bd8c0cf2f3e3d423d81f3862c8f301d510cbc616889"
+        "version": "393402f038a1f2caa0b345ab929ed827f0d75fb87efeb2651d05bf76d96bcceb",
+        "signature": "e7f5c8703fce1970bcbdced4d13dde6a848e40834ebc5dafe5a6d1be94c92505"
       },
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/poker.ts": {
-        "version": "b9f80773edafe09b6d2675fdb432cd2bfc1809a7123242f8590360cf04aaef50",
-        "signature": "8f4d05967e2833b02f014b4a3ca135782bc1a695bfbbf8faed77e62a512ebd1b"
+        "version": "b3cfc8abfcd0088e7734970efaac7609fead0871a0cd1cd076f23047ab242c3a",
+        "signature": "1f4cb07cb44f2bb55d0fede3b85aa749fa5c95e0c0bcf303c236fcdaf1ebbf8c"
+      },
+      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/payloads.ts": {
+        "version": "8d93baabc16214a70d02e45a091163d8b0c01075558fc4b8b4c800efc2705340",
+        "signature": "d21328a21ec8432036d70f5225abf0f334f6a4c69857176e8f7b546620fc4614"
       },
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/events.ts": {
-        "version": "6373821c16f81fd9fafb82ef035cc2cd1d7ca78c2b7671c95222aade3c1c5158",
-        "signature": "f2cd3a3cb30c276cf6d5ec31f6a9832b63a27416e604ca08aca7bfa028d12c95"
+        "version": "cce10a27eeff7b7c1550e9f2cf18089fc34aca24642b62cccd5fd0ca9f9c913e",
+        "signature": "d195e18ddbca7fe9111ace3cf19d9eef2edb8a98a1d6d7a0c8f4636cc0542b72"
       },
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/index.ts": {
         "version": "fdbb870deb829c2c7f6dbd355ca149f9295368411fba280b4f6232142e698041",
@@ -203,7 +203,8 @@
     },
     "referencedMap": {
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/payloads.ts": [
-        "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/room.ts"
+        "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/room.ts",
+        "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/poker.ts"
       ],
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/index.ts": [
         "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/redux.ts",
@@ -228,7 +229,8 @@
     },
     "exportedModulesMap": {
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/payloads.ts": [
-        "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/room.ts"
+        "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/room.ts",
+        "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/poker.ts"
       ],
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/index.ts": [
         "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/redux.ts",
@@ -284,7 +286,7 @@
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/redux.ts",
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/room.ts",
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/poker.ts",
-      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/events.ts",
+      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/payloads.ts",
       "/home/umberto/node_modules/@types/color-name/index.d.ts",
       "/home/umberto/node_modules/@types/istanbul-lib-coverage/index.d.ts",
       "/home/umberto/node_modules/@types/istanbul-lib-report/index.d.ts",
@@ -294,7 +296,7 @@
       "/home/umberto/node_modules/@types/yargs-parser/index.d.ts",
       "/home/umberto/node_modules/@types/yargs/index.d.ts",
       "/home/umberto/node_modules/@types/yoga-layout/index.d.ts",
-      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/payloads.ts",
+      "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/events.ts",
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/types/index.ts",
       "/home/umberto/Documents/others/planning-poker/planning-poker/packages/shared/src/index.ts"
     ]

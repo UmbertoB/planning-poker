@@ -20,8 +20,6 @@ import {
     createRoomFailure,
     newPlayer,
     playerLeft,
-    startPokerFailure,
-    startPokerSuccess,
 } from 'app/redux/webSocket/actions';
 import {
     Action,
@@ -31,7 +29,6 @@ import {
     NewPlayerPayload,
     JoinedRoomPayload,
     CreateRoomPayload,
-    StartPokerPayload,
     RoomEvents,
 } from '@planning-poker/shared';
 import { createRoom } from 'app/services/room';
@@ -60,7 +57,7 @@ export function* joinRoomSaga({ client }: { client: SocketIOClient.Socket }) {
 
     yield fork(eventListener, client, RoomEvents.CANT_JOIN_ALREADY_STARTED_POKER, function* () {
         yield put(joinRoomFailure());
-        toast('This poker in this room has already started');
+        toast('The poker in this room has already started');
     });
 
 }
@@ -119,19 +116,3 @@ export function* createRoomSaga() {
 
 }
 
-export function* startPoker({ client }: { client: SocketIOClient.Socket }) {
-
-    yield takeEvery(WebSocketActionTypes.START_POKER_REQUEST, function* (action: Action<string, StartPokerPayload>) {
-        yield fork(eventEmitter, client, RoomEvents.START_POKER, action.payload);
-    });
-
-    yield fork(eventListener, client, RoomEvents.POKER_STARTED, function* () {
-        yield put(startPokerSuccess());
-    });
-
-    yield fork(eventListener, client, RoomEvents.CANT_START_POKER_OF_INEXISTENT_ROOM, function* () {
-        yield put(startPokerFailure());
-        toast('Can`t start poker of inexistent room');
-    });
-
-}
