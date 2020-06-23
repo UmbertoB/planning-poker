@@ -15,5 +15,8 @@
   "scripts": {
     "configure:prod": "npx tsc -b",
     "start:dev": "npx tsc -w"
+  },
+  "dependencies": {
+    "typescript": "^3.9.5"
   }
 }
