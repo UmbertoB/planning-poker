@@ -37,7 +37,7 @@ import {
 import { createRoom } from 'app/services/room';
 
 
-export function* joinRoomSaga({ client }: { client: SocketIOClient.Socket }) {
+export function* joinRoomSaga(client: SocketIOClient.Socket) {
 
     yield takeEvery(WebSocketActionTypes.JOIN_ROOM_REQUEST, function* (action: Action<string, JoinRoomPayload>) {
         yield fork(eventEmitter, client, RoomEvents.JOIN_ROOM, action.payload);
@@ -65,7 +65,7 @@ export function* joinRoomSaga({ client }: { client: SocketIOClient.Socket }) {
 
 }
 
-export function* leaveRoomSaga({ client }: { client: SocketIOClient.Socket }) {
+export function* leaveRoomSaga(client: SocketIOClient.Socket) {
 
     yield takeEvery(WebSocketActionTypes.LEAVE_ROOM_REQUEST, function* (action: Action<string, LeaveRoomPayload>) {
 
@@ -119,7 +119,7 @@ export function* createRoomSaga() {
 
 }
 
-export function* startPoker({ client }: { client: SocketIOClient.Socket }) {
+export function* startPoker(client: SocketIOClient.Socket) {
 
     yield takeEvery(WebSocketActionTypes.START_POKER_REQUEST, function* (action: Action<string, StartPokerPayload>) {
         yield fork(eventEmitter, client, RoomEvents.START_POKER, action.payload);

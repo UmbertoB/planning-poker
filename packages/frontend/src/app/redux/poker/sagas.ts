@@ -24,7 +24,7 @@ import {
     CardValueSelectedPayload,
 } from '@planning-poker/shared';
 
-export function* setTaskDescription({ client }: { client: SocketIOClient.Socket }) {
+export function* setTaskDescription(client: SocketIOClient.Socket) {
 
     yield takeEvery(PokerActionTypes.SET_TASK_DESCRIPTION_REQUEST, function* (action: Action<string, SetTaskDescriptionPayload>) {
         yield fork(eventEmitter, client, RoomEvents.SET_TASK_DESCRIPTION, action.payload);
@@ -40,7 +40,7 @@ export function* setTaskDescription({ client }: { client: SocketIOClient.Socket 
 
 }
 
-export function* cardValuesSelected({ client }: { client: SocketIOClient.Socket }) {
+export function* cardValuesSelected(client: SocketIOClient.Socket) {
 
     yield takeEvery(PokerActionTypes.SELECT_CARD_VALUE_REQUEST, function* (action: Action<string, SelectCardValuePayload>) {
         yield fork(eventEmitter, client, RoomEvents.SELECT_CARD_VALUE, action.payload);
@@ -59,7 +59,7 @@ export function* cardValuesSelected({ client }: { client: SocketIOClient.Socket 
     });
 }
 
-export function* restartPoker({ client }: { client: SocketIOClient.Socket }) {
+export function* restartPoker(client: SocketIOClient.Socket) {
 
     yield takeEvery(PokerActionTypes.RESTART_POKER_REQUEST, function* (action: Action<string, string>) {
         yield fork(eventEmitter, client, RoomEvents.RESTART_POKER_REQUEST, action.payload);

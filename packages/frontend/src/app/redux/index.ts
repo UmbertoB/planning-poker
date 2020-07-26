@@ -47,8 +47,6 @@ const store: Store<ApplicationState> = createStore(
 );
 
 const client = io(backendURLPath);
-rootSaga.forEach((saga) => {
-    sagaMiddleware.run(saga, { client });
-});
+rootSaga.forEach(saga => sagaMiddleware.run(saga, client));
 
 export default store;
