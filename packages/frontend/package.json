@@ -4,7 +4,6 @@
   "private": false,
   "license": "UNLICENSED",
   "dependencies": {
-    "@planning-poker/shared": "^0.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -35,7 +34,7 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start:dev": "REACT_APP_ENV='development' react-scripts start",
+    "start:dev": "set REACT_APP_ENV='development' && react-scripts start",
     "configure:prod": "REACT_APP_ENV='production' react-scripts build",
     "build": "react-scripts build",
     "test": "react-scripts test",
